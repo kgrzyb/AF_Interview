@@ -11,12 +11,12 @@ namespace AFSInterview
 
         private void OnEnable()
         {
-            InventoryController.OnItemsSold += HandleItemsSold;
+            InventoryController.OnMoneyChanged += HandleItemsSold;
         }
 
         private void OnDisable()
         {
-            InventoryController.OnItemsSold -= HandleItemsSold;
+            InventoryController.OnMoneyChanged -= HandleItemsSold;
         }
 
         private void HandleItemsSold(int money)

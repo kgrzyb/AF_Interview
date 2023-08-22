@@ -8,19 +8,23 @@
 	{
 		[SerializeField] private string name;
 		[SerializeField] private int value;
+		[SerializeField] private bool isConsumable;
 
 		public string Name => name;
 		public int Value => value;
+		public bool IsConsumable => isConsumable;
 
-		public Item(string name, int value)
+		public Item(string name, int value, bool isConsumable)
 		{
 			this.name = name;
 			this.value = value;
+			this.isConsumable = isConsumable;
 		}
 
 		public void Use()
 		{
 			Debug.Log("Using" + Name);
+
 		}
 	}
 }

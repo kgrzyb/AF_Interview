@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1562054653796185208}
   - component: {fileID: 8426643071871308913}
   m_Layer: 3
-  m_Name: Item
+  m_Name: Consumable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 8119570870960888954}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1562054653796185208
 MonoBehaviour:
@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    name: Apple
-    value: 10
-    isConsumable: 0
+    name: Sack
+    value: 50
+    isConsumable: 1
 --- !u!65 &8426643071871308913
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a63f19b0eef85944f90648a795e0958b, type: 2}
+  - {fileID: 2100000, guid: 1a13ce68ca4008c45acebfee23f98068, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
