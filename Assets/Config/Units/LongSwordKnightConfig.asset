@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bd4f442c977f543b57ecd16d36d5f0, type: 3}
+  m_Name: LongSwordKnightConfig
+  m_EditorClassIdentifier: 
+  unitName: 0
+  atributes: 3
+  hp: 150
+  armor: 100
+  attackInterval: 2
+  damage: 25
+  damageOverrides:
+  - unitAtribute: 1
+    damage: 50
