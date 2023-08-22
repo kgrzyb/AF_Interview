@@ -19,13 +19,6 @@ namespace AFSInterview
         public Bounds ArmyBounds => armyBounds.bounds;
         public bool IsArmyDefeated => availableUnits.Count <= 0;
 
-        private void HandleUnitKilled(Unit unit)
-        {
-            availableUnits.Remove(unit);
-            unitsOrder.Remove(unit);
-            Destroy(unit.gameObject);
-        }
-
         public void SetTurnOrder()
         {
             var units = new List<Unit>(availableUnits);
@@ -52,7 +45,11 @@ namespace AFSInterview
                 {
                     var unitToAttack = enemyArmy.SelectUnitForAttack();
                     Debug.Log("Unit " + unit.UnitName + " of " + ArmyId + " attacked unit " + unitToAttack.UnitName);
-                    unit.Attack(unitToAttack); 
+                    unit.Attack(unitToAttack);
+                }
+                else
+                {
+                    Debug.Log("Unit " + unit.UnitName + " of " + ArmyId + " need wait " + unit.TurnsToNextAttack + " turns");
                 }
             }
         }

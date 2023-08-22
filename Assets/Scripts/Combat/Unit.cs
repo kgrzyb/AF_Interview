@@ -26,6 +26,7 @@ namespace AFSInterview
         public List<DamageOverride> DamageOverrides { get => damageOverrides; set => damageOverrides = value; }
         public UnitAtribute Atributes { get => atributes; set => atributes = value; }
         public int AttackInterval { get => attackInterval; set => attackInterval = value; }
+        public int TurnsToNextAttack  => turnsToNextAttack;
 
         private void OnEnable()
         {
