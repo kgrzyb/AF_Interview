@@ -1,6 +1,7 @@
 ﻿namespace AFSInterview.Items
 {
-	using System.Collections.Generic;
+    using System;
+    using System.Collections.Generic;
 	using UnityEngine;
 
 	public class InventoryController : MonoBehaviour
@@ -10,6 +11,8 @@
 
 		public int Money => money;
 		public int ItemsCount => items.Count;
+
+		public static Action<int> OnItemsSold;
 
 		public void SellAllItemsUpToValue(int maxValue)
 		{
@@ -23,6 +26,7 @@
 				money += itemValue;
 				items.Remove(itemsForSale[i]);
 			}
+			OnItemsSold?.Invoke(Money);
 		}
 
 		public void AddItem(Item item)

@@ -1,6 +1,5 @@
 ﻿namespace AFSInterview.Items
 {
-	using TMPro;
 	using UnityEngine;
 
 	public class ItemsManager : MonoBehaviour
@@ -13,8 +12,14 @@
 		[SerializeField] private float itemSpawnInterval;
 
 		private float nextItemSpawnTime;
-		
-		private void Update()
+		private int itemLayerMask;
+
+		private void Start()
+        {
+			itemLayerMask = LayerMask.GetMask("Item");
+		}
+
+        private void Update()
 		{
 			if (Time.time >= nextItemSpawnTime)
 				SpawnNewItem();
@@ -25,19 +30,12 @@
 			if (Input.GetKeyDown(KeyCode.Space))
 				inventoryController.SellAllItemsUpToValue(itemSellMaxValue);
 
-			FindObjectOfType<TextMeshProUGUI>().text = "Money: " + inventoryController.Money;
 		}
 
 		private void SpawnNewItem()
 		{
 			nextItemSpawnTime = Time.time + itemSpawnInterval;
-			
-			var spawnAreaBounds = itemSpawnArea.bounds;
-			var position = new Vector3(
-				Random.Range(spawnAreaBounds.min.x, spawnAreaBounds.max.x),
-				0f,
-				Random.Range(spawnAreaBounds.min.z, spawnAreaBounds.max.z)
-			);
+			var position = GetRandomSpawnPositionInBounds(itemSpawnArea.bounds);
 			
 			Instantiate(itemPrefab, position, Quaternion.identity, itemSpawnParent);
 		}
@@ -45,13 +43,21 @@
 		private void TryPickUpItem()
 		{
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			var layerMask = LayerMask.GetMask("Item");
-			if (!Physics.Raycast(ray, out var hit, 100f, layerMask) || !hit.collider.TryGetComponent<IItemHolder>(out var itemHolder))
+			if (!Physics.Raycast(ray, out var hit, 100f, itemLayerMask) || !hit.collider.TryGetComponent<IItemHolder>(out var itemHolder))
 				return;
 			
 			var item = itemHolder.GetItem(true);
             inventoryController.AddItem(item);
             Debug.Log("Picked up " + item.Name + " with value of " + item.Value + " and now have " + inventoryController.ItemsCount + " items");
+		}
+
+		private Vector3 GetRandomSpawnPositionInBounds(Bounds bounds)
+        {
+			return new Vector3(
+				Random.Range(bounds.min.x, bounds.max.x),
+				0f,
+				Random.Range(bounds.min.z, bounds.max.z)
+			);
 		}
 	}
 }
