@@ -7,6 +7,7 @@ namespace AFSInterview
     public class Army : MonoBehaviour
     {
         [SerializeField] ArmyId armyId;
+        [SerializeField] Army enemyArmy;
         [SerializeField] BoxCollider armyBounds;
         [SerializeField] List<UnitName> armyUnits = new();
 
@@ -49,19 +50,19 @@ namespace AFSInterview
             return unit;
         }
 
-        public bool TryGetAvailableUnitTurn(out Unit availableUnit)
+        public void Attack()
         {
             foreach(var unit in unitsOrder)
             {
                 if (unit.IsAttackAvailable())
                 {
-                    availableUnit = unit;
-                    return true;
+                    var unitToAttack = enemyArmy.SelectUnitForAttack();
+                    Debug.Log("Unit " + unit.UnitName + " of " + ArmyId + " attacked unit " + unitToAttack.UnitName);
+                    unit.Attack(unitToAttack); 
                 }
             }
-            availableUnit = null;
-            return false;
         }
+
 
         public Unit SelectUnitForAttack()
         {

@@ -18,7 +18,7 @@ namespace AFSInterview
 
         private int turnsToNextAttack;
 
-        public ArmyId Army { get => army; set => army = value; }
+        public ArmyId ArmyId { get => army; set => army = value; }
 
         public UnitName UnitName => unitName;
 
@@ -39,9 +39,10 @@ namespace AFSInterview
             CombatManager.OnTurnEnded -= HandleTurnEnded;
         }
 
-        private void HandleTurnEnded()
+        private void HandleTurnEnded(Army army)
         {
-            WaitTurn();
+            if (army.ArmyId != ArmyId)
+                WaitTurn();
         }
 
         public void SetCurrentHealt(int health)

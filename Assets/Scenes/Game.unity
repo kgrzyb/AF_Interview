@@ -616,6 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armyId: 1
+  enemyArmy: {fileID: 1353391287}
   armyBounds: {fileID: 278868169}
   armyUnits: 00000000000000000200000004000000
   availableUnits: []
@@ -1405,6 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armyId: 2
+  enemyArmy: {fileID: 278868170}
   armyBounds: {fileID: 1353391286}
   armyUnits: 0100000001000000010000000300000004000000
   availableUnits: []

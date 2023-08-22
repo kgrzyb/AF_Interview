@@ -10,7 +10,7 @@ namespace AFSInterview
         [SerializeField] UnitFactory unitFactory;
         [SerializeField] List<Army> armies;
 
-        public static Action OnTurnEnded;
+        public static Action<Army> OnTurnEnded;
 
         private int currentAttackingArmyIndex;
 
@@ -33,15 +33,10 @@ namespace AFSInterview
 
         private void PlayTurn()
         {
-            var army = armies[currentAttackingArmyIndex];
-            if (army.TryGetAvailableUnitTurn(out var unit))
-            {
-                var unityToAttack = SelectUnitToAttack(); 
-                Debug.Log("Unit " + unit.UnitName + " of " + army.ArmyId + " attacked unit " + unityToAttack.UnitName);
-                unit.Attack(unityToAttack);
-            }
+            var currentArmy = armies[currentAttackingArmyIndex];
+            currentArmy.Attack();
+            OnTurnEnded?.Invoke(currentArmy);
             ChangeTurn();
-            OnTurnEnded?.Invoke();
         }
 
         private void ChangeTurn()
@@ -52,15 +47,6 @@ namespace AFSInterview
                 currentAttackingArmyIndex = 0;
         }
 
-        private Unit SelectUnitToAttack()
-        {
-            foreach(Army army in armies)
-            {
-                if (armies[currentAttackingArmyIndex].ArmyId != army.ArmyId)
-                   return army.SelectUnitForAttack();
-            }
-            return null;
-        }
 
         private void CreateArmies()
         {
@@ -71,7 +57,7 @@ namespace AFSInterview
                     var unitName = army.ArmyUnits[i];
                     var spawnPos = GetRandomSpawnPositionInBounds(army.ArmyBounds);
                     var unit = unitFactory.CreateUnit(unitName, spawnPos, Quaternion.identity, army.transform);
-                    unit.Army = army.ArmyId;
+                    unit.ArmyId = army.ArmyId;
                     army.availableUnits.Add(unit);
                 }
                 army.SetTurnOrder();
