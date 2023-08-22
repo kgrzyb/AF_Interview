@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 3782510694496585194}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4050681266126440691
 MonoBehaviour:
@@ -42,10 +42,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3363009981307278063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b0b39dd8f022b74ca55436fac78920c, type: 3}
+  m_Script: {fileID: 11500000, guid: ac4fcd02531414f43bb1509c47a458d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitConfig: {fileID: 11400000, guid: 5671611754ddb744b9537bdb4c81c037, type: 2}
+  unitName: 0
 --- !u!1 &8923986233755518389
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 054ee5a11282c9f48af5c9f7d3eae0e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

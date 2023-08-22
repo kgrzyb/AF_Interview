@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: 3
   atributes: 6
   hp: 200
-  armor: 100
+  armor: 15
   attackInterval: 4
   damage: 75
   damageOverrides:

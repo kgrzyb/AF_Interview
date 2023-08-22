@@ -601,7 +601,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7, y: 1, z: 15}
+  m_Size: {x: 5, y: 1, z: 12}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &278868170
 MonoBehaviour:
@@ -615,8 +615,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517edc25f7b109048b0e4bff860532a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armyId: 1
   armyBounds: {fileID: 278868169}
   armyUnits: 00000000000000000200000004000000
+  availableUnits: []
+  unitsOrder: []
 --- !u!1001 &434945508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1386,7 +1389,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7, y: 1, z: 15}
+  m_Size: {x: 5, y: 1, z: 12}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1353391287
 MonoBehaviour:
@@ -1400,8 +1403,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517edc25f7b109048b0e4bff860532a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armyId: 2
   armyBounds: {fileID: 1353391286}
   armyUnits: 0100000001000000010000000300000004000000
+  availableUnits: []
+  unitsOrder: []
 --- !u!4 &1362504115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6760591476060598716, guid: 70297e35c79c32843b2cbbda048d720c,
@@ -1647,6 +1653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10310290387c6ee43941f8f7ac3138d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allUnitsConfigs: {fileID: 11400000, guid: cecf79062ac27864da8133f728529c83, type: 2}
   allUnitsCollection: {fileID: 11400000, guid: ecfd6ebb36fb80e469773d5641bf28d9, type: 2}
 --- !u!1 &1644132304
 GameObject:

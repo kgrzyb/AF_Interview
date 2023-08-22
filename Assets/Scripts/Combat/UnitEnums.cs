@@ -11,6 +11,13 @@ namespace AFSInterview
         Ram
     }
 
+    public enum ArmyId
+    {
+        None,
+        Army1,
+        Army2,
+    }
+
     [Flags]
     public enum UnitAtribute
     {
@@ -19,4 +26,5 @@ namespace AFSInterview
         Armored = 1 << 1,
         Mechanical = 1 << 2,
     }
+
 }

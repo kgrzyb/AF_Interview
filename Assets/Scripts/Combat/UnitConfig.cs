@@ -21,16 +21,9 @@ namespace AFSInterview
         public int Hp => hp;
         public int Armor => armor;
         public int AttackInterval => attackInterval;
+        public int Damage => damage;
+        public List<DamageOverride> DamageOverrides => damageOverrides;
 
-        public int GetDamageAgainst(UnitAtribute unitAtribute)
-        {
-            foreach (DamageOverride damageOverride in damageOverrides)
-            {
-                if (unitAtribute.HasFlag(damageOverride.UnitAtribute))
-                    return damageOverride.Damge;
-            }
-            return damage;
-        }
 
     }
 

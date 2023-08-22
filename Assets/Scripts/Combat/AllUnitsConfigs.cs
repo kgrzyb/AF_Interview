@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace AFSInterview
 {
-    [CreateAssetMenu(fileName = "UnitsCollection", menuName = "Create Unit Collection")]
-    public class AllUnitsCollection : ScriptableObject
+    [CreateAssetMenu(fileName = "UnitsConfigs", menuName = "All Units Configs")]
+    public class AllUnitsConfigs  : ScriptableObject
     {
-        public List<Unit> units;
+        public List<UnitConfig> unitConfigs;
 
-        public Unit GetUnit(UnitName unitName)
+        public UnitConfig GetUnitConfig(UnitName unitName)
         {
-            foreach(var unit in units)
+            foreach(var unit in unitConfigs)
             {
                 if (unit.UnitName == unitName)
                     return unit;
