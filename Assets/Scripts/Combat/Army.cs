@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,19 +10,14 @@ namespace AFSInterview
         [SerializeField] BoxCollider armyBounds;
         [SerializeField] List<UnitName> armyUnits = new();
 
-        public List<Unit> availableUnits;
+        private List<Unit> availableUnits= new();
 
-        public List<Unit> unitsOrder;
+        private List<Unit> unitsOrder = new();
 
         public List<UnitName> ArmyUnits => armyUnits;
         public ArmyId ArmyId => armyId;
         public Bounds ArmyBounds => armyBounds.bounds;
         public bool IsArmyDefeated => availableUnits.Count <= 0;
-
-        private void OnEnable()
-        {
-            Unit.OnUnitKilled += HandleUnitKilled;
-        }
 
         private void HandleUnitKilled(Unit unit)
         {
@@ -63,10 +57,20 @@ namespace AFSInterview
             }
         }
 
-
         public Unit SelectUnitForAttack()
         {
             return GetUnit(availableUnits);
+        }
+
+        public void AddUnit(Unit unit)
+        {
+            availableUnits.Add(unit);
+        }
+
+        public void RemoveDeadUnit(Unit unit)
+        {
+            availableUnits.Remove(unit);
+            unitsOrder.Remove(unit);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace AFSInterview
     public class Unit : MonoBehaviour
     {
         [SerializeField] UnitName unitName;
-        private ArmyId army;
+        private Army army;
         private UnitAtribute atributes;
         private int currentHealth;
         private int armor;
@@ -18,7 +18,7 @@ namespace AFSInterview
 
         private int turnsToNextAttack;
 
-        public ArmyId ArmyId { get => army; set => army = value; }
+        public Army Army { get => army; set => army = value; }
 
         public UnitName UnitName => unitName;
 
@@ -26,8 +26,6 @@ namespace AFSInterview
         public List<DamageOverride> DamageOverrides { get => damageOverrides; set => damageOverrides = value; }
         public UnitAtribute Atributes { get => atributes; set => atributes = value; }
         public int AttackInterval { get => attackInterval; set => attackInterval = value; }
-
-        public static Action<Unit> OnUnitKilled;
 
         private void OnEnable()
         {
@@ -41,7 +39,7 @@ namespace AFSInterview
 
         private void HandleTurnEnded(Army army)
         {
-            if (army.ArmyId != ArmyId)
+            if (Army != army)
                 WaitTurn();
         }
 
@@ -84,8 +82,8 @@ namespace AFSInterview
         {
             if (currentHealth <= 0)
             {
-                gameObject.SetActive(false);
-                OnUnitKilled?.Invoke(this);
+                army.RemoveDeadUnit(this);
+                Destroy(this.gameObject);
             }
         }
 

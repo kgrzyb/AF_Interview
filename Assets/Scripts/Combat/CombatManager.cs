@@ -57,8 +57,8 @@ namespace AFSInterview
                     var unitName = army.ArmyUnits[i];
                     var spawnPos = GetRandomSpawnPositionInBounds(army.ArmyBounds);
                     var unit = unitFactory.CreateUnit(unitName, spawnPos, Quaternion.identity, army.transform);
-                    unit.ArmyId = army.ArmyId;
-                    army.availableUnits.Add(unit);
+                    unit.Army = army;
+                    army.AddUnit(unit);
                 }
                 army.SetTurnOrder();
             }
